@@ -4,6 +4,7 @@ function getmenus() {
   $('#spinsavemenu').show();
 
   var cont = 0;
+  var previous = null;
   $('#menu-to-edit li').each(function(index) {
     var dept = 0;
     for (var i = 0; i < $('#menu-to-edit li').length; i++) {
@@ -18,7 +19,7 @@ function getmenus() {
       .find('.item-edit')
       .text();
     var id = this.id.split('-');
-    var textoexplotado = textoiner.split('|');
+    var textoexplotado = textoiner.split('.');
     var padre = 0;
     if (
       !!textoexplotado[textoexplotado.length - 2] &&
@@ -26,6 +27,21 @@ function getmenus() {
     ) {
       padre = textoexplotado[textoexplotado.length - 2];
     }
+    if($(this).find('.is-submenu').is(':visible'))
+    {
+        // console.log($(this).is("[data-parent]"))
+        if (!previous.is("[data-parent]")) {
+            prevId = previous.attr('id').split('-');
+            $(this).attr('data-parent', prevId[2]);
+            padre = prevId[2];
+        } else {
+            padre = previous.attr('data-parent');
+        }
+
+    } else {
+        padre = 0;
+    }
+    previous = $(this);
     arraydata.push({
       depth: dept,
       id: id[2],
@@ -149,6 +165,7 @@ function actualizarmenu() {
 }
 
 function deleteitem(id) {
+    console.log(id);
   $.ajax({
     dataType: 'json',
     data: {
@@ -162,7 +179,8 @@ function deleteitem(id) {
 }
 
 function deletemenu() {
-  var r = confirm(menus.deleteMenu);
+//   var r = confirm(menus.deleteMenu);
+  var r = confirm("You're deleting the menu. Are you sure want to delete?");
   if (r == true) {
     $.ajax({
       dataType: 'json',
@@ -178,10 +196,10 @@ function deletemenu() {
       },
       success: function(response) {
         if (!response.error) {
-          alert(response.resp);
+        //   alert(response.resp);
           window.location = menuwr;
         } else {
-          alert(response.resp);
+        //   alert(response.resp);
         }
       },
       complete: function() {
@@ -209,7 +227,7 @@ function createnewmenu() {
       }
     });
   } else {
-    alert(menus.enterMenuName);
+    // alert(menus.enterMenuName);
     $('#menu-name').focus();
     return false;
   }

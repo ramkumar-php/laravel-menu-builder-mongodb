@@ -2,11 +2,10 @@
 
 namespace Efectn\Menu\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Jenssegers\Mongodb\Eloquent\Model;
 
 class MenuItems extends Model
 {
-
     protected $table = null;
 
     protected $fillable = ['label', 'link', 'parent_id', 'sort', 'class', 'menu_id', 'depth', 'role_id'];
@@ -14,7 +13,7 @@ class MenuItems extends Model
     public function __construct(array $attributes = [])
     {
         //parent::construct( $attributes );
-        $this->table = config('menu.table_prefix') . config('menu.table_name_items');
+        $this->table = config('menu.table_prefix').config('menu.table_name_items');
     }
 
     public function getSons($id)

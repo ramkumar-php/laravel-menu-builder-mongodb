@@ -1,5 +1,5 @@
 {
-    "name": "efectn/laravel-menu-builder",
+    "name": "ramkumar-php/laravel-menu-builder-mongodb",
     "description": " Wordpress like drag & drop menu builder for Laravel 9.x ",
     "keywords": ["Laravel", "Menu", "Wordpress", "Builder", "Drag and Drop"],
     "authors": [

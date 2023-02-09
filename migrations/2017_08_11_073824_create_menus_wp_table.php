@@ -11,10 +11,10 @@ class CreateMenusWpTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create( config('menu.table_prefix') . config('menu.table_name_menus'), function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create(config('menu.table_prefix').config('menu.table_name_menus'), function (Blueprint $table): void {
+            $table->uuid('_id');
             $table->string('name');
             $table->timestamps();
         });
@@ -25,8 +25,8 @@ class CreateMenusWpTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
-        Schema::dropIfExists( config('menu.table_prefix') . config('menu.table_name_menus'));
+        Schema::dropIfExists(config('menu.table_prefix').config('menu.table_name_menus'));
     }
 }

@@ -3,7 +3,7 @@
 }
 
 #hwpwrap a{
-    color: #2ea2cc;
+    /* color: #2ea2cc; */
 }
 
 #hwpwrap .outer-border{
@@ -15,7 +15,7 @@
   width: 100%;
   position: relative;
   -webkit-font-smoothing: subpixel-antialiased;
-  
+
 }
 #hwpwrap #wpcontent {
   height: 100%;
@@ -1024,7 +1024,7 @@
   box-shadow: 0 0 0 1px #5b9dd9, 0 0 2px 1px rgba(30, 140, 190, 0.8);
 }
 #hwpwrap .nav-menus-php .item-edit:before {
-  line-height: 2.1;
+  line-height: 1.7;
 }
 #hwpwrap .accordion-section-title:after, #hwpwrap .control-section .accordion-section-title:after {
   float: right;
@@ -1553,7 +1553,7 @@
 }
 #hwpwrap .submitbox .submitdelete {
   text-decoration: none;
-  padding: 1px 2px;
+  /* padding: 1px 2px; */
 }
 #hwpwrap #normal-sortables .submitbox .submitdelete:hover {
   color: #000;
@@ -2200,7 +2200,7 @@
 #hwpwrap .nav-menus-php .meta-sep, #hwpwrap .nav-menus-php .submitcancel, #hwpwrap .nav-menus-php .submitdelete {
   display: block;
   float: left;
-  margin: 6px 0;
+  margin: 6px;
   line-height: 15px;
 }
 #hwpwrap .meta-sep {
@@ -2511,7 +2511,7 @@
 }
 #hwpwrap .menu-item-settings {
   display: block;
-  width: 402px;
+  width: 382px;
   padding: 10px 0 10px 10px;
   position: relative;
   z-index: 10;
@@ -2585,10 +2585,10 @@
   margin-top: 2px;
 }
 #hwpwrap .nav-menus-php .submitbox .submitcancel {
-  border-bottom: 1px solid #0074a2;
+  /* border-bottom: 1px solid #0074a2;
   padding: 1px 2px;
   color: #0074a2;
-  text-decoration: none;
+  text-decoration: none; */
 }
 #hwpwrap .nav-menus-php .submitbox .submitcancel:hover {
   background: #0074a2;
@@ -2762,7 +2762,7 @@
   font-size: 13px;
   line-height: 26px;
   height: 28px;
-  margin: 0;
+  margin: 6px;
   padding: 0 10px 1px;
   cursor: pointer;
   border-width: 1px;

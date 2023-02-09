@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class AddRoleIdToMenuItemsTable extends Migration
@@ -11,10 +10,10 @@ class AddRoleIdToMenuItemsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::table(config('menu.table_prefix') . config('menu.table_name_items'), function ($table) {
-            $table->integer('role_id')->default(0);
+        Schema::table(config('menu.table_prefix').config('menu.table_name_items'), function ($table): void {
+            $table->uuid('role_id')->default(0);
         });
     }
 
@@ -23,9 +22,9 @@ class AddRoleIdToMenuItemsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
-        Schema::table(config('menu.table_prefix') . config('menu.table_name_items'), function ($table) {
+        Schema::table(config('menu.table_prefix').config('menu.table_name_items'), function ($table): void {
             $table->dropColumn('role_id');
         });
     }

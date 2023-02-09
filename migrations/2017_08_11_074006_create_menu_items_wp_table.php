@@ -11,21 +11,21 @@ class CreateMenuItemsWpTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create( config('menu.table_prefix') . config('menu.table_name_items') , function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create(config('menu.table_prefix').config('menu.table_name_items'), function (Blueprint $table): void {
+            $table->uuid('id');
             $table->string('label');
             $table->string('link');
-            $table->unsignedBigInteger('parent_id')->default(0);
+            $table->uuid('parent_id')->default(0);
             $table->integer('sort')->default(0);
             $table->string('class')->nullable();
             $table->unsignedBigInteger('menu_id');
             $table->integer('depth')->default(0);
             $table->timestamps();
 
-            $table->foreign('menu_id')->references('id')
-                ->on(config('menu.table_prefix') . config('menu.table_name_menus'))
+            $table->foreign('menu_id')->references('_id')
+                ->on(config('menu.table_prefix').config('menu.table_name_menus'))
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });
@@ -36,8 +36,8 @@ class CreateMenuItemsWpTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
-        Schema::dropIfExists( config('menu.table_prefix') . config('menu.table_name_items'));
+        Schema::dropIfExists(config('menu.table_prefix').config('menu.table_name_items'));
     }
 }

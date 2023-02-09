@@ -2,37 +2,33 @@
 
 namespace Efectn\Menu\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Efectn\Menu\Models\Menus;
 use Efectn\Menu\Models\MenuItems;
 
 class MenuController extends Controller
 {
-
     public function createMenu()
     {
-
         $menu = new Menus();
         $menu->name = request()->input("menuname");
         $menu->save();
 
-        return json_encode(array("resp" => $menu->id));
+        return json_encode(["resp" => $menu->id]);
     }
 
     public function deleteMenu()
     {
         $menus = new MenuItems();
         $all = $menus->getAll(request()->input("id"));
-        if (count($all) == 0) {
+        if (count($all) === 0) {
             $menu = Menus::find(request()->input("id"));
             $menu->delete();
 
-            return json_encode(array("resp" => __("menu-builder::messages.deleting_this_menu")));
+            return json_encode(["resp" => __("menu-builder::messages.deleting_this_menu")]);
         }
 
-        return json_encode(array("resp" => __("menu-builder::messages.delete_all_items"), "error" => 1));
+        return json_encode(["resp" => __("menu-builder::messages.delete_all_items"), "error" => 1]);
     }
 
     public function updateMenu()
@@ -54,16 +50,16 @@ class MenuController extends Controller
             }
         }
 
-        return json_encode(array("resp" => 1));
+        return json_encode(["resp" => 1]);
     }
 
-    public function deleteMenuItem()
+    public function deleteMenuItem(): void
     {
         $menuItem = MenuItems::find(request()->input("id"));
         $menuItem->delete();
     }
 
-    public function updateMenuItem()
+    public function updateMenuItem(): void
     {
         $arrayData = request()->input("arraydata");
         if (is_array($arrayData)) {
@@ -89,17 +85,16 @@ class MenuController extends Controller
         }
     }
 
-    public function addMenuItem()
+    public function addMenuItem(): void
     {
         $menuItem = new MenuItems();
         $menuItem->label = request()->input("labelmenu");
         $menuItem->link = request()->input("linkmenu");
         if (config('menu.use_roles')) {
-            $menuItem->role_id = request()->input("rolemenu") ? request()->input("rolemenu")  : 0 ;
+            $menuItem->role_id = request()->input("rolemenu") ? request()->input("rolemenu") : 0 ;
         }
         $menuItem->menu_id = request()->input("idmenu");
         $menuItem->sort = MenuItems::getNextSortRoot(request()->input("idmenu"));
         $menuItem->save();
-
     }
 }
