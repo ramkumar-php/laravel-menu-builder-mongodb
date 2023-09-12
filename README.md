@@ -11,7 +11,7 @@ Originally forked from [harimayco/wmenu-builder](https://github.com/harimayco/wm
 1. Run
 
 ```php
-composer require vsrklabs/laravel-menu-builder-mongodb
+composer require vsrklabs/laravel-menu-mongodb
 ```
 
 2. Add facade in the config/app.php (optional )
